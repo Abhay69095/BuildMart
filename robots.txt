@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /products/
+Allow: /categories/
+Allow: /about/
+Allow: /contact/
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+Sitemap: https://buildmart.com/sitemap.xml

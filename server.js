@@ -7,20 +7,32 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const WebSocket = require('ws');
 const http = require('http');
+const helmet = require('helmet');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
+const morgan = require('morgan');
+const logger = require('./utils/logger');
+const config = require(`./config/${process.env.NODE_ENV || 'production'}`);
 
 const app = express();
 const server = http.createServer(app);
 
-// WebSocket setup
-const wss = new WebSocket.Server({ server });
+// Security middleware
+app.use(helmet());
+app.use(compression());
 
 // Middleware
-app.use(cors());
+app.use(cors(config.cors));
+app.use(morgan(config.morgan.format));
+app.use(rateLimit(config.rateLimit));
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/buildmart')
+mongoose.connect(
+    process.env.MONGODB_URI ||
+    'mongodb+srv://vaibhavgujite:' + encodeURIComponent(process.env.DB_PASSWORD) + '@cluster0.yiz6r0t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -94,6 +106,9 @@ const Product = mongoose.model('Product', productSchema);
 const Contact = mongoose.model('Contact', contactSchema);
 const Order = mongoose.model('Order', orderSchema);
 const Activity = mongoose.model('Activity', activitySchema);
+
+// WebSocket setup
+const wss = new WebSocket.Server({ server });
 
 // WebSocket connections
 wss.on('connection', (ws) => {
@@ -748,9 +763,9 @@ app.get('/api/stats/dashboard', authenticateToken, isAdmin, async (req, res) => 
     }
 });
 
-// Error handling
+// Error handling middleware
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    logger.error('Unhandled error:', { error: err.message, stack: err.stack });
     res.status(500).json({ error: 'Something went wrong!' });
 });
 
