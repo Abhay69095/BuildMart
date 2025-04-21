@@ -9,13 +9,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
   <link href="Style.css" rel="stylesheet">
   <link href="custom.css" rel="stylesheet"><link href="custom.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images\buildmartlogo.png">
 </head>
 <body>
   <!-- Top Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="margin-top: 0; padding-top: 0.5rem; padding-bottom: 0.5rem;">
     <div class="container">
-      <a class="navbar-brand font-bold text-2xl" href="#">
-        <span class="text-orange-600">Build</span><span class="font-normal">Mart</span>
+      <!-- Logo image added to navbar -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images\buildmartlogo.png" alt="BuildMart Logo" style="height:80px; width:auto; margin-right: 10px; margin-top: 0rem; margin-bottom: 0rem;">
+        <span class="visually-hidden">BuildMart</span>
       </a>
   
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -74,7 +77,7 @@
               <h1 class="display-3 fw-bold mb-4 text-white">Quality Construction Materials</h1>
               <p class="lead mb-4 text-white">Build with confidence using our premium construction materials delivered to your doorstep</p>
               <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-warning btn-lg px-4">Shop Now</button>
+                <a href="all product.html"><button class="btn btn-warning btn-lg px-4">Shop Now</button></a>
                 <a href="learn-more.html" class="btn btn-outline-light btn-lg px-4">Learn More</a>
               </div>
             </div>
@@ -267,8 +270,7 @@
                     <div>
                       <span class="text-decoration-line-through text-secondary">$29.99</span>
                       <span class="fw-bold text-primary fs-4 ms-2">$20.99</span>
-                    </div>
-                    <button class="btn btn-primary">Shop Now</button>
+                    </div><a href="all%20product.html" class="btn btn-primary">Shop Now</a>
                   </div>
                 </div>
               </div>
@@ -297,7 +299,7 @@
                       <span class="text-decoration-line-through text-secondary">$299.99</span>
                       <span class="fw-bold text-primary fs-4 ms-2">$249.99</span>
                     </div>
-                    <button class="btn btn-primary">Shop Now</button>
+                    <a href="all%20product.html" class="btn btn-primary">Shop Now</a>
                   </div>
                 </div>
               </div>
