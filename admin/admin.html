@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMart Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>BuildMart</h1>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#products"><i class="fas fa-box"></i> Products</a>
+                    </li>
+                    <li>
+                        <a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+                    </li>
+                    <li>
+                        <a href="#customers"><i class="fas fa-users"></i> Customers</a>
+                    </li>
+                    <li>
+                        <a href="#inquiries"><i class="fas fa-envelope"></i> Inquiries</a>
+                    </li>
+                    <li>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="back-to-home" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                    <div class="search-bar">
+                        <input type="search" placeholder="Search...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="admin-profile">
+                    <span id="adminName">Admin</span>
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="stat-info">
+                            <h3>Total Value</h3>
+                            <p data-stat="total-value">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>Customers</h3>
+                            <p data-stat="total-customers">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="stat-info">
+                            <h3>Inquiries</h3>
+                            <p data-stat="total-inquiries">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3>Products</h3>
+                            <p data-stat="total-products">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <!-- Activity items will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="admin-section" style="display: none;">
+                <h2>Products Management</h2>
+                <div class="product-form-container" style="display:none;">
+                    <form id="productForm" class="product-form">
+                        <input type="hidden" name="id">
+                        <div class="form-group">
+                            <label for="name">Product Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" name="category" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" id="price" name="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input type="number" id="stock" name="stock" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageUrl">Image URL</label>
+                            <input type="url" id="imageUrl" name="imageUrl" required>
+                        </div>
+                        <button type="submit">Save Product</button>
+                    </form>
+                </div>
+                <div class="products-list">
+               <!-- Products will be loaded here dynamically -->
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="admin-section" style="display: none;">
+                <h2>Orders Management</h2>
+                <div class="orders-list">
+                    <!-- Orders will be loaded here dynamically -->
+                </div>
+            </section>
+
+            <!-- Customers Section -->
+            <section id="customers" class="admin-section" style="display: none;">
+                <h2>Customer Management</h2>
+                <div class="customers-list">
+                    <!-- Customers will be loaded here dynamically -->
+                </div>
+            </section>
+
+            <!-- Inquiries Section -->
+            <section id="inquiries" class="admin-section" style="display: none;">
+                <h2>Customer Inquiries</h2>
+                <div class="contacts-list">
+                    <!-- Inquiries will be loaded here dynamically -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="admin-section" style="display: none;">
+                <h2>Admin Settings</h2>
+                <div class="settings-container">
+                    <!-- Settings content will go here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="admin-script.js"></script>
+</body>
+</html>
