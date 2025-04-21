@@ -1236,7 +1236,7 @@ section.py-5.bg-primary.text-white button.btn-light:focus {
 
 @media (max-width: 991.98px) {
     section.py-5.bg-primary.text-white {
-        padding: 1rem 0 !important; /* reduced padding */
+        padding: 1rem 0 !important; 
         border-radius: 12px;
     }
     section.py-5.bg-primary.text-white h2 {
@@ -1251,7 +1251,7 @@ section.py-5.bg-primary.text-white button.btn-light:focus {
 
 @media (max-width: 575.98px) {
     section.py-5.bg-primary.text-white {
-        padding: 0.7rem 0.5rem !important; /* reduced padding */
+        padding: 0.7rem 0.5rem !important;
         border-radius: 8px;
     }
     section.py-5.bg-primary.text-white h2 {
