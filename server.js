@@ -285,6 +285,10 @@ async function createSampleData() {
         const orderCount = await Order.countDocuments();
         if (orderCount === 0) {
             const products = await Product.find().limit(3);
+            if (!products || products.length < 3) {
+                console.error('Sample data error: Not enough products found to create orders');
+                return;
+            }
             const orders = [
                 {
                     customerName: "Michael Brown",
